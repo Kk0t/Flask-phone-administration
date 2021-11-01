@@ -11,7 +11,7 @@ class Config(object):
     # 开启调试模式
     DEBUG = True
     # 数据库链接信息配置
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:ztest123@192.168.10.241:3306/flask_db"
+    SQLALCHEMY_DATABASE_URI = ""
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     # redis配置
     REDIS_HOST = '127.0.0.1'
