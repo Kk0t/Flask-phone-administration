@@ -1,35 +1,17 @@
 # Flask-phone-administration
 基于flask编写的测试机管理平台接口
 
-环境
-alembic==1.7.1
-antiorm==1.2.1
-cachelib==0.3.0
-certifi==2021.5.30
-charset-normalizer==2.0.4
-click==8.0.1
-colorama==0.4.4
+环境（详看site-packages/requirements.txt）
+
 Flask==1.1.2
 Flask-Login==0.5.0
-Flask-Migrate==2.7.0
-Flask-Script==2.0.6
-Flask-Session==0.4.0
 Flask-SQLAlchemy==2.5.1
 Flask-WTF==0.15.1
-greenlet==1.1.1
-idna==3.2
-importlib-metadata==4.8.1
-importlib-resources==5.2.2
-itsdangerous==2.0.1
-Jinja2==3.0.1
-Mako==1.1.5
-MarkupSafe==2.0.1
 PyMySQL==1.0.2
 redis==3.5.3
 requests==2.26.0
 SQLAlchemy==1.4.23
 tornado==6.1
-typing-extensions==3.10.0.2
 urllib3==1.26.6
 Werkzeug==2.0.1
 WTForms==2.3.3
