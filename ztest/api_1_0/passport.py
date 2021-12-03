@@ -6,7 +6,7 @@ from itsdangerous import BadSignature, SignatureExpired
 
 from ztest.constants import LOGIN_REDIS_EXPIRES
 from . import api
-from flask import request, current_app, jsonify, session, g
+from flask import request, current_app, jsonify
 from ztest import redis_store, db, s
 from ztest.models import User
 from ztest.utils.response_code import RET
@@ -78,7 +78,6 @@ def login():
     # session['mobile'] = user.mobile
     # session['user_id'] = user.id
 
-
     # 5.返回结果
     token = s.dumps({"id": user.id, "mobile": user.mobile, "name": user.name}).decode('ascii')
 
@@ -91,9 +90,6 @@ def login():
 
 @api.route('/register', methods=['POST'])
 def register():
-    '''
-    :return:
-    '''
     # 1.获取参数并判断是否有值
     data_dict = request.get_json()
     mobile = data_dict.get('mobile')
@@ -145,6 +141,7 @@ def register():
 
 
 @api.route('/user/info')
+@login_required
 def retunUserInfo():
     permissions = {'permissions': ['test']}
     data = {
@@ -241,10 +238,11 @@ def retunUserInfo():
 
 
 @api.route('/user/nav')
+@login_required
 def retunUserNav():
     data = {
-        "nav": {
-            'name': 'testDemo',
+        "nav": [{
+            'name': 'testPhone',
             'parentId': 0,
             'id': 1,
             'meta': {
@@ -253,7 +251,7 @@ def retunUserNav():
                 'show': 'true'
             },
             'component': 'RouteView',
-            'redirect': '/testDemo/test1'
-        }
+            'redirect': '/testPhone/Phone'
+        }]
     }
     return data

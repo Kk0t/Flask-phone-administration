@@ -6,7 +6,7 @@
 from urllib import request
 import json
 
-url = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=xxxxxx" #替换自己的key
+url = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=xxxxxxxx"
 type = ["#### **<font color=\"warning\">借用测试机</font>**\n", "#### **<font color='info'>归还测试机</font>**\n"]
 
 
@@ -18,6 +18,22 @@ def push(user, i, phone):
         "markdown": {
             "content": type[i] + ">操作人：<font color=\"comment\">" + user + "</font>\n"
                        + ">机型：<font color=\"comment\">" + phone + "</font>"
+        }
+    }
+    req = request.Request(url=url, data=json.dumps(params).encode('utf-8'), headers=headers)
+    post_url = request.urlopen(req)
+    print(post_url.read().decode('utf-8'))
+
+
+def robot_remind():
+    headers = {'Content-Type': 'application/json'}
+    text = ""
+
+    params = {
+        "msgtype": "text",
+        "text": {
+            "content": "测试机归还提醒:\n" + text,
+            "mentioned_list": ["@all"],
         }
     }
     req = request.Request(url=url, data=json.dumps(params).encode('utf-8'), headers=headers)
